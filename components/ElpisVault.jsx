@@ -157,6 +157,8 @@ export default function ElpisVault() {
                     Elpis Delta Mint : {ethers.utils.formatUnits(elpisDeltaMint)} ELP
                     <br/>
                     Personal Elpis Balance : {ethers.utils.formatUnits(currentAccountBalance)} ELP
+                    <br/>
+                    whatsup
                 </div>
             ) : (
                 <div>No Vault Address Detected</div>
