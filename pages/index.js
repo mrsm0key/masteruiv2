@@ -2,6 +2,7 @@ import Head from "next/head"
 import { Inter } from "next/font/google"
 import Header from "../components/Header"
 import ElpisVault from "../components/ElpisVault"
+import ElpisStack from "../components/ElpisStack"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -15,6 +16,7 @@ export default function Home() {
             </Head>
             <Header />
             <ElpisVault />
+            <ElpisStack />
         </>
     )
 }

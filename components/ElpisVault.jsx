@@ -1,5 +1,5 @@
 import { useWeb3Contract } from "react-moralis"
-import {abi, contractAddresses} from "../constants"
+import { abi, contractAddresses } from "../constants"
 import { useMoralis } from "react-moralis"
 import { useEffect, useState } from "react"
 import { ethers } from "ethers"
@@ -32,7 +32,11 @@ export default function ElpisVault() {
 
 
 ////////////// home made shit ////////////
+    //3 update and set the current value 
+    //4 ligne 167~ display the value on ui 
     const [currentAccountBalance, setCurrentAccountBalance] = useState(ethers.BigNumber.from(0));
+
+    //1 function gen : get all, return balanceOf 
     const getCurrentAccountBalance = async () => {
         const provider = new ethers.providers.Web3Provider(window.ethereum)
         const signer = provider.getSigner()
@@ -70,6 +74,7 @@ export default function ElpisVault() {
     })
 
     async function updateUI() {
+            //console.log(`Current total Supply: ${totalSupply.toString()}`)
             const elpisTotalSupplyFromCall = ( await totalSupply()).toString()
             setElpisTotalSupply(elpisTotalSupplyFromCall)
             const elpisGetMintPriceFromCall = ( await getMintPrice()).toString()
@@ -88,10 +93,14 @@ export default function ElpisVault() {
             /* const elpisUserBalanceFromCall = getCurrentAccountBalance()
             setCurrentAccountBalance(elpisUserBalanceFromCall) */
 
+            //2 set balance after check 
             const balance = await getCurrentAccountBalance();
             setCurrentAccountBalance(balance)
 
            
+
+
+
 
 
 
@@ -152,11 +161,11 @@ export default function ElpisVault() {
                     <br/>
                     Total Elpis Supply : {ethers.utils.formatUnits(elpisTotalSupply)} ELP
                     <br/>
-                    Elpis Mint Price : {ethers.utils.formatUnits(elpisMintPrice, "ether")} ETH
+                    Elpis Mint Price : {elpisMintPrice} ETH
                     <br/>
                     Elpis Delta Mint : {ethers.utils.formatUnits(elpisDeltaMint)} ELP
                     <br/>
-                    Personal Elpis Balance : {ethers.utils.formatUnits(currentAccountBalance)} ELP
+                    Personal Elpis Balance : {ethers.utils.formatUnits(currentAccountBalance)} ELP 
                     <br/>
                     whatsup
                 </div>

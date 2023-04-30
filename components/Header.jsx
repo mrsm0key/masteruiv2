@@ -33,6 +33,7 @@ export default function Header() {
                 </div>
             ) : (
                 <button
+                    className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-auto"
                     onClick={async () => {
                         await enableWeb3()
                         if (typeof window !== "undefined") {
